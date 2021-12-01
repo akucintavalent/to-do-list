@@ -1,5 +1,5 @@
 {
-  "name": "webpack-exercise",
+  "name": "to-do-list",
   "version": "1.0.0",
   "description": "",
   "private": true,
@@ -11,15 +11,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/akucintavalent/webpack-exercise.git"
+    "url": "git+https://github.com/akucintavalent/to-do-list.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/akucintavalent/webpack-exercise/issues"
+    "url": "https://github.com/akucintavalent/to-do-list/issues"
   },
-  "homepage": "https://github.com/akucintavalent/webpack-exercise#readme",
+  "homepage": "https://github.com/akucintavalent/to-do-list#readme",
   "devDependencies": {
     "babel-eslint": "^10.1.0",
     "css-loader": "^6.5.1",
