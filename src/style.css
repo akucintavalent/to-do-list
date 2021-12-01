@@ -16,7 +16,7 @@ body {
 
 #to-do-list {
   background-color: #fff;
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
   box-sizing: border-box;
   max-width: 400px;
   width: 50vw;
@@ -30,12 +30,17 @@ body {
   border-bottom: 1px solid gray;
   min-height: 50px;
   padding: 0.9em 0.7em;
+
   /* align-items: center; */
 }
 
 .title h2 {
   margin-right: auto;
   font-weight: 400;
+}
+
+.item input {
+  margin-top: 0.2em;
 }
 
 .input input {
@@ -56,17 +61,13 @@ body {
 
 .return-symbol {
   font-size: 0.5em;
-  font-family: arial;
+  font-family: arial, sans-serif;
   color: gray;
 }
 
 .description {
   flex-grow: 1;
   margin: 0 0.7em;
-}
-
-.item input {
-  margin-top: 0.2em;
 }
 
 .clear-completed-button {
