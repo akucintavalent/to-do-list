@@ -1,5 +1,4 @@
-// eslint-disable-next-line import/prefer-default-export
-export const toDoList = [
+const toDoList = [
   {
     id: 1,
     description: 'Task 1',
@@ -21,3 +20,5 @@ export const toDoList = [
     completed: false,
   },
 ];
+
+export default toDoList;

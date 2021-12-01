@@ -1,6 +1,6 @@
 import './style.css';
-import { toDoList } from './to-do-list.js';
-import { updateItems } from './status-updates.js';
+import toDoList from './to-do-list.js';
+import updateItems from './status-updates.js';
 
 const storedList = JSON.parse(localStorage.getItem('toDoList') || 'null');
 if (storedList !== null) {

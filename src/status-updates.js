@@ -1,7 +1,6 @@
-import { toDoList } from './to-do-list.js';
+import toDoList from './to-do-list.js';
 
-// eslint-disable-next-line import/prefer-default-export
-export const updateItems = () => {
+const updateItems = () => {
   toDoList.forEach((item) => {
     function onchange() {
       item.completed = this.checked;
@@ -10,3 +9,5 @@ export const updateItems = () => {
     item.checkbox.addEventListener('change', onchange);
   });
 };
+
+export default updateItems;
