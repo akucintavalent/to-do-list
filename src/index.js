@@ -1,14 +1,40 @@
-import _ from "lodash";
-import './style.css'
+import './style.css';
 
-function component() {
-  const element = document.createElement("div");
+const toDoList = [
+  {
+    id: 1,
+    description: 'Task 1',
+    completed: false,
+  },
+  {
+    id: 2,
+    description: 'Finish to do list',
+    completed: true,
+  },
+  {
+    id: 3,
+    description: 'Wash dishes',
+    completed: false,
+  },
+  {
+    id: 4,
+    description: 'Lorem ipsum adlkshfalkjhLKJHlkjlkjlkJHLKJKLJHKLJhjkl kljh h  hjk hjkl lhjk khj kjlh hjkl hjkl jkl jkl h   jb',
+    completed: false,
+  },
+];
 
-  // Lodash, currently included via a script, is required for this line to work
-  // Lodash, now imported by this script
-  element.innerHTML = _.join(["Hello", "webpack"], " ");
+const displayList = () => {
+  const container = document.getElementById('to-do-list');
+  const clearCompletedButton = document.querySelector('.clear-completed-button');
+  const itemElement = document.querySelector('.item');
 
-  return element;
-}
+  toDoList.forEach((item) => {
+    const itemElementCopy = itemElement.cloneNode(true);
+    itemElementCopy.children[1].innerText = item.description;
+    itemElementCopy.children[0].checked = item.completed;
+    container.insertBefore(itemElementCopy, clearCompletedButton);
+  });
+  itemElement.remove();
+};
 
-document.body.appendChild(component());
+displayList();

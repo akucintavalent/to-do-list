@@ -1,3 +1,83 @@
 body {
-  background-color: bisque;
+  background-color: rgb(236, 236, 236);
+  display: flex;
+  justify-content: center;
+  margin-top: 5em;
+}
+
+* {
+  font-family: sans-serif;
+  font-size: 15px;
+  font-weight: 200;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#to-do-list {
+  background-color: #fff;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  box-sizing: border-box;
+  max-width: 400px;
+  width: 50vw;
+  min-width: 300px;
+  list-style-type: none;
+  border-radius: 3px;
+}
+
+#to-do-list > * {
+  display: flex;
+  border-bottom: 1px solid gray;
+  min-height: 50px;
+  padding: 0.9em 0.7em;
+  /* align-items: center; */
+}
+
+.title h2 {
+  margin-right: auto;
+  font-weight: 400;
+}
+
+.input input {
+  border: 0;
+  height: 100%;
+  width: 90%;
+  margin-right: auto;
+}
+
+.input input::placeholder {
+  font-style: italic;
+  font-weight: 200;
+}
+
+.input input:focus {
+  border: 0;
+}
+
+.return-symbol {
+  font-size: 0.5em;
+  font-family: arial;
+  color: gray;
+}
+
+.description {
+  flex-grow: 1;
+  margin: 0 0.7em;
+}
+
+.item input {
+  margin-top: 0.2em;
+}
+
+.clear-completed-button {
+  justify-content: center;
+  align-items: center;
+  border-bottom: 0 !important;
+  background: rgb(228, 228, 228);
+  color: gray;
+}
+
+.fa-ellipsis-v,
+.fa-sync-alt {
+  color: gray;
 }
