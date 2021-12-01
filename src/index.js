@@ -1,27 +1,12 @@
 import './style.css';
+import toDoList from './to-do-list.js';
+import updateItems from './status-updates.js';
 
-const toDoList = [
-  {
-    id: 1,
-    description: 'Task 1',
-    completed: false,
-  },
-  {
-    id: 2,
-    description: 'Finish to do list',
-    completed: true,
-  },
-  {
-    id: 3,
-    description: 'Wash dishes',
-    completed: false,
-  },
-  {
-    id: 4,
-    description: 'Lorem ipsum adlkshfalkjhLKJHlkjlkjlkJHLKJKLJHKLJhjkl kljh h  hjk hjkl lhjk khj kjlh hjkl hjkl jkl jkl h   jb',
-    completed: false,
-  },
-];
+const storedList = JSON.parse(localStorage.getItem('toDoList') || 'null');
+if (storedList !== null) {
+  toDoList.length = 0;
+  toDoList.push(...storedList);
+}
 
 const displayList = () => {
   const container = document.getElementById('to-do-list');
@@ -30,11 +15,16 @@ const displayList = () => {
 
   toDoList.forEach((item) => {
     const itemElementCopy = itemElement.cloneNode(true);
-    itemElementCopy.children[1].innerText = item.description;
-    itemElementCopy.children[0].checked = item.completed;
+    const textElement = itemElementCopy.children[1];
+    textElement.innerText = item.description;
+    const checkbox = itemElementCopy.children[0];
+    checkbox.checked = item.completed;
+    item.checkbox = checkbox;
+
     container.insertBefore(itemElementCopy, clearCompletedButton);
   });
   itemElement.remove();
 };
 
 displayList();
+updateItems();

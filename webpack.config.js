@@ -2,14 +2,18 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: {
+    index: './src/index.js',
+    status_updates: './src/status-updates.js',
+    to_do_list: './src/to-do-list.js',
+  },
   mode: 'development',
   devtool: 'inline-source-map',
   devServer: {
     static: './dist',
   },
   output: {
-    filename: 'main.js',
+    filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
