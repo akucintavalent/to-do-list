@@ -9,9 +9,13 @@
 - HTML&CSS, JavaScript
 - Webpack
 
-## Getting Started
+## Using the project locally
 
-**Download/clone the repository. Open index.html file in Google Chrome browser. Open DevTools and use Toggle device toolbar to show how the site looks on a smartphone.**
+- Clone the project from GitHub.
+- Run the following commands as listed in your terminal:
+ - `npm install`
+ - `npm run build`
+ - Open `dist/index.html` or run `npm start`
 
 ## 👤 Bohdan Shcherbak
 
