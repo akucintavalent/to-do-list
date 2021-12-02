@@ -14,21 +14,29 @@ const editDescription = (list = toDoList.data) => {
       textElement.style.display = 'none';
       editDescriptionInput.value = textElement.innerText;
 
+      const edit = () => {
+        item.description = editDescriptionInput.value;
+        localStorage.setItem('toDoList', JSON.stringify(toDoList.data));
+        textElement.style.display = 'initial';
+        textElement.innerText = editDescriptionInput.value;
+        buttonTrash.style.display = 'none';
+        button3Dots.style.display = 'initial';
+        editDescriptionInput.style.display = 'none';
+      };
       editDescriptionInput.addEventListener('keyup', ({ key }) => {
         if (key === 'Enter') {
-          item.description = editDescriptionInput.value;
-          localStorage.setItem('toDoList', JSON.stringify(toDoList.data));
-          textElement.style.display = 'initial';
-          textElement.innerText = editDescriptionInput.value;
-          buttonTrash.style.display = 'none';
-          button3Dots.style.display = 'initial';
-          editDescriptionInput.style.display = 'none';
+          edit();
         }
       });
+
+      editDescriptionInput.addEventListener('focusout', edit);
 
       buttonTrash.addEventListener('click', () => {
         item.checkbox.parentNode.remove();
         toDoList.data = toDoList.data.filter((itemEl) => itemEl !== item);
+        toDoList.data.forEach((item, index) => {
+          item.index = index;
+        });
         localStorage.setItem('toDoList', JSON.stringify(toDoList.data));
       });
     });

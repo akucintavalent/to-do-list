@@ -8,7 +8,7 @@ const addElementToListHandler = () => {
   const returnSymbol = document.querySelector('.return-symbol');
 
   const addElementToList = () => {
-    const newTask = new Task(inputField.value);
+    const newTask = new Task(inputField.value, toDoList.data.length);
     displayList([
       newTask,
     ], false);
@@ -17,6 +17,7 @@ const addElementToListHandler = () => {
     ]);
     toDoList.data.push(newTask);
     localStorage.setItem('toDoList', JSON.stringify(toDoList.data));
+    inputField.value = '';
   };
   returnSymbol.addEventListener('click', addElementToList);
 

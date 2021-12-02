@@ -10,6 +10,7 @@ module.exports = {
     display_items: './src/display-items.js',
     edit_description: './src/edit-description.js',
     task: './src/task.js',
+    clear_all_completed: './src/clear-all-completed.js',
   },
   mode: 'development',
   devtool: 'inline-source-map',
