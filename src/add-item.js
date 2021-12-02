@@ -11,7 +11,7 @@ const addElementToListHandler = () => {
     const newTask = new Task(inputField.value, toDoList.data.length);
     displayList([
       newTask,
-    ], false);
+    ]);
     updateItems([
       newTask,
     ]);

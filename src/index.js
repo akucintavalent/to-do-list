@@ -10,6 +10,8 @@ const storedList = JSON.parse(localStorage.getItem('toDoList') || 'null');
 if (storedList !== null) {
   toDoList.data = storedList;
 }
+const itemElement = document.querySelector('.item');
+itemElement.style.display = 'none';
 
 displayList();
 updateItems();
