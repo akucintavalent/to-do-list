@@ -15,8 +15,8 @@ const addElementToListHandler = () => {
     updateItems([
       newTask,
     ]);
-    toDoList.push(newTask);
-    localStorage.setItem('toDoList', JSON.stringify(toDoList));
+    toDoList.data.push(newTask);
+    localStorage.setItem('toDoList', JSON.stringify(toDoList.data));
   };
   returnSymbol.addEventListener('click', addElementToList);
 

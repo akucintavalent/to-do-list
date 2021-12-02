@@ -7,8 +7,7 @@ import editDescription from './edit-description.js';
 
 const storedList = JSON.parse(localStorage.getItem('toDoList') || 'null');
 if (storedList !== null) {
-  toDoList.length = 0;
-  toDoList.push(...storedList);
+  toDoList.data = storedList;
 }
 
 displayList();

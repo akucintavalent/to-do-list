@@ -1,6 +1,6 @@
 import toDoList from './to-do-list.js';
 
-const displayList = (list = toDoList, removeFirst = true) => {
+const displayList = (list = toDoList.data, removeFirst = true) => {
   const container = document.getElementById('to-do-list');
   const clearCompletedButton = document.querySelector('.clear-completed-button');
   const itemElement = document.querySelector('.item');
