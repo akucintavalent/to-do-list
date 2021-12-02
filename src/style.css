@@ -63,11 +63,19 @@ body {
   font-size: 0.5em;
   font-family: arial, sans-serif;
   color: gray;
+  padding-left: 3em;
 }
 
 .description {
   flex-grow: 1;
   margin: 0 0.7em;
+}
+
+.edit-description {
+  display: none;
+  flex-grow: 1;
+  margin: 0 0.7em;
+  border: 0;
 }
 
 .clear-completed-button {
@@ -79,6 +87,12 @@ body {
 }
 
 .fa-ellipsis-v,
-.fa-sync-alt {
+.fa-sync-alt,
+.fa-trash-alt {
   color: gray;
+  padding-left: 2em;
+}
+
+.fa-trash-alt {
+  display: none;
 }

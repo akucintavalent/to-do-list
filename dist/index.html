@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wbpack Exercise</title>
     <script src="https://kit.fontawesome.com/c4f9b857f0.js" crossorigin="anonymous"></script>
-<script defer src="index.js"></script><script defer src="status_updates.js"></script></head>
+<script defer src="index.js"></script><script defer src="status_updates.js"></script><script defer src="to_do_list.js"></script></head>
 <body>
     <ul id="to-do-list">
       <li class="title">
@@ -18,7 +18,10 @@
       </li>
       <li class="item">
         <input type="checkbox">
-        <p class="description">Double-tap to edit</p>
+        <div class="description-container">
+          <p class="description">Double-tap to edit</p>
+          <input class="edit-description" type="text" placeholder="Edit description">
+        </div>
         <i class="fas fa-ellipsis-v fa-sm"></i>
       </li>
       <li class="clear-completed-button">
