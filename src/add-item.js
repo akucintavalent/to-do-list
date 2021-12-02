@@ -2,6 +2,7 @@ import toDoList from './to-do-list.js';
 import displayList from './display-items.js';
 import Task from './task.js';
 import updateItems from './status-updates.js';
+import editDescription from './edit-description.js';
 
 const addElementToListHandler = () => {
   const inputField = document.querySelector('.input input');
@@ -13,6 +14,9 @@ const addElementToListHandler = () => {
       newTask,
     ]);
     updateItems([
+      newTask,
+    ]);
+    editDescription([
       newTask,
     ]);
     toDoList.data.push(newTask);
