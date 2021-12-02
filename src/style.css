@@ -3,6 +3,7 @@ body {
   display: flex;
   justify-content: center;
   margin-top: 5em;
+  margin-bottom: 5em;
 }
 
 * {
@@ -63,11 +64,20 @@ body {
   font-size: 0.5em;
   font-family: arial, sans-serif;
   color: gray;
+  padding-left: 3em;
+  cursor: pointer;
 }
 
 .description {
   flex-grow: 1;
   margin: 0 0.7em;
+}
+
+.edit-description {
+  display: none;
+  flex-grow: 1;
+  margin: 0 0.7em;
+  border: 0;
 }
 
 .clear-completed-button {
@@ -76,9 +86,17 @@ body {
   border-bottom: 0 !important;
   background: rgb(228, 228, 228);
   color: gray;
+  cursor: pointer;
 }
 
 .fa-ellipsis-v,
-.fa-sync-alt {
+.fa-sync-alt,
+.fa-trash-alt {
   color: gray;
+  padding-left: 2em;
+  cursor: pointer;
+}
+
+.fa-trash-alt {
+  display: none;
 }

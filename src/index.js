@@ -1,30 +1,20 @@
 import './style.css';
 import toDoList from './to-do-list.js';
 import updateItems from './status-updates.js';
+import displayList from './display-items.js';
+import addElementToListHandler from './add-item.js';
+import editDescription from './edit-description.js';
+import clearAllCompleted from './clear-all-completed.js';
 
 const storedList = JSON.parse(localStorage.getItem('toDoList') || 'null');
 if (storedList !== null) {
-  toDoList.length = 0;
-  toDoList.push(...storedList);
+  toDoList.data = storedList;
 }
-
-const displayList = () => {
-  const container = document.getElementById('to-do-list');
-  const clearCompletedButton = document.querySelector('.clear-completed-button');
-  const itemElement = document.querySelector('.item');
-
-  toDoList.forEach((item) => {
-    const itemElementCopy = itemElement.cloneNode(true);
-    const textElement = itemElementCopy.children[1];
-    textElement.innerText = item.description;
-    const checkbox = itemElementCopy.children[0];
-    checkbox.checked = item.completed;
-    item.checkbox = checkbox;
-
-    container.insertBefore(itemElementCopy, clearCompletedButton);
-  });
-  itemElement.remove();
-};
+const itemElement = document.querySelector('.item');
+itemElement.style.display = 'none';
 
 displayList();
 updateItems();
+addElementToListHandler();
+editDescription();
+clearAllCompleted();
