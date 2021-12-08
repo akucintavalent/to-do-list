@@ -86,7 +86,7 @@ describe('add-remove tasks functionality', () => {
     }
     expect(taskDescriptionTags.length).toBe(0);
   });
-  test('clear all completed button', () => {
+  test('clear all completed button (between 3 and 20 list items)', () => {
     mountDOM(html);
     addElementToListHandler();
     clearAllCompleted();
