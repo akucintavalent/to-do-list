@@ -50,7 +50,7 @@ describe('add-remove tasks functionality', () => {
     input.value = text;
     expect(() => addButton.click()).toThrow();
   });
-  test('add between 3 and 20 tasks with random text', () => {
+  test('add between 3 and 20 tasks with random text and remove them in random order', () => {
     mountDOM(html);
     addElementToListHandler();
     const input = document.querySelector('.input input');
@@ -65,8 +65,22 @@ describe('add-remove tasks functionality', () => {
       randomStrings.push(generateRandomString());
     }
     randomStrings.forEach((randString) => addTask(randString));
-    const taskDescriptionTags = Array.from(document.querySelectorAll('.description'));
+    let taskDescriptionTags = Array.from(document.querySelectorAll('.description'));
     taskDescriptionTags.shift();
     expect(randomStrings).toEqual(taskDescriptionTags.map((pTag) => pTag.innerText));
+
+    for (let i = 0; i < numberOfTasks; i += 1) {
+      taskDescriptionTags = Array.from(document.querySelectorAll('.description'));
+      taskDescriptionTags.shift();
+      const randInt = getRandomInt(0, taskDescriptionTags.length-1);
+      randomStrings.splice(randInt, 1);
+      // click 3 dots
+      taskDescriptionTags[randInt].nextElementSibling.nextElementSibling.click();
+      // click trash button
+      taskDescriptionTags[randInt].nextElementSibling.nextElementSibling.nextElementSibling.click();
+      taskDescriptionTags = Array.from(document.querySelectorAll('.description'));
+      taskDescriptionTags.shift();
+      expect(randomStrings).toEqual(taskDescriptionTags.map((pTag) => pTag.innerText));
+    }
   });
 });
