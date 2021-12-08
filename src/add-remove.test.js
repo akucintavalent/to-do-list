@@ -5,8 +5,8 @@ import addElementToListHandler from './add-item.js';
 
 const html = readFileSync('src/index.html', 'utf8');
 
-describe('adding', () => {
-  test('test1', async () => {
+describe('add-remove tasks functionality', () => {
+  test('adding and removing a task', () => {
     mountDOM(html);
     addElementToListHandler();
     const input = document.querySelector('.input input');
@@ -29,5 +29,16 @@ describe('adding', () => {
     trashButton.click();
     buttons3Dots = document.querySelectorAll('.fa-ellipsis-v');
     expect(buttons3Dots.length).toBe(1);
+  });
+  test('no duplicate task', () => {
+    const text = 'Duplicate task';
+    mountDOM(html);
+    addElementToListHandler();
+    const input = document.querySelector('.input input');
+    input.value = text;
+    const addButton = document.querySelector('.return-symbol');
+    addButton.click();
+    input.value = text;
+    expect(() => addButton.click()).toThrow();
   });
 });
