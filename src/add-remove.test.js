@@ -3,6 +3,8 @@ import mountDOM from 'jsdom-mount';
 import { readFileSync } from 'fs';
 import addElementToListHandler from './add-item.js';
 
+import clearAllCompleted from './clear-all-completed.js';
+
 const html = readFileSync('src/index.html', 'utf8');
 
 function generateRandomString() {
@@ -57,7 +59,7 @@ describe('add-remove tasks functionality', () => {
     const addButton = document.querySelector('.return-symbol');
     function addTask(text) {
       input.value = text;
-      addButton.click();
+      input.dispatchEvent(new KeyboardEvent('keyup', { key: 'Enter' }));
     }
     const randomStrings = [];
     const numberOfTasks = getRandomInt(3, 20);
@@ -83,5 +85,48 @@ describe('add-remove tasks functionality', () => {
       expect(randomStrings).toEqual(taskDescriptionTags.map((pTag) => pTag.innerText));
     }
     expect(taskDescriptionTags.length).toBe(0);
+  });
+  test('clear all completed button', () => {
+    mountDOM(html);
+    addElementToListHandler();
+    clearAllCompleted();
+    const input = document.querySelector('.input input');
+    const addButton = document.querySelector('.return-symbol');
+    function addTask(text) {
+      input.value = text;
+      input.dispatchEvent(new KeyboardEvent('keyup', { key: 'Enter' }));
+    }
+    const randomStrings = [];
+    const numberOfTasks = getRandomInt(3, 20);
+    for (let i = 0; i < numberOfTasks; i += 1) {
+      randomStrings.push(generateRandomString());
+    }
+    randomStrings.forEach((randString) => addTask(randString));
+    let taskDescriptionTags = Array.from(document.querySelectorAll('.description'));
+    taskDescriptionTags.shift();
+    expect(randomStrings).toEqual(taskDescriptionTags.map((pTag) => pTag.innerText));
+
+    const numberOfCompleted = getRandomInt(1, numberOfTasks);
+    const completedIndexes = [];
+    let randInt;
+    for (let i = 0; i < numberOfCompleted; i += 1) {
+      taskDescriptionTags = Array.from(document.querySelectorAll('.description'));
+      taskDescriptionTags.shift();
+      randInt = getRandomInt(0, taskDescriptionTags.length-1);
+      while (completedIndexes.includes(randInt)) {
+        randInt = (randInt + 1) % taskDescriptionTags.length;
+      };
+      // click checkbox
+      taskDescriptionTags[randInt].previousElementSibling.click();
+      completedIndexes.push(randInt);
+    }
+    const clearCompletedButton = document.querySelector('.clear-completed-button');
+    clearCompletedButton.click();
+    taskDescriptionTags = Array.from(document.querySelectorAll('.description'));
+    taskDescriptionTags.shift();
+    const filteredRandomStrings = randomStrings.filter((randStr, index) => {
+      return !completedIndexes.includes(index);
+    });
+    expect(filteredRandomStrings).toEqual(taskDescriptionTags.map((pTag) => pTag.innerText));
   });
 });

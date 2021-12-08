@@ -19,9 +19,9 @@ const addElementToListHandler = () => {
     editDescription([
       newTask,
     ]);
+    inputField.value = '';
     toDoList.data.push(newTask);
     localStorage.setItem('toDoList', JSON.stringify(toDoList.data));
-    inputField.value = '';
   };
   returnSymbol.addEventListener('click', addElementToList);
 
