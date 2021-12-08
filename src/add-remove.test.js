@@ -82,5 +82,6 @@ describe('add-remove tasks functionality', () => {
       taskDescriptionTags.shift();
       expect(randomStrings).toEqual(taskDescriptionTags.map((pTag) => pTag.innerText));
     }
+    expect(taskDescriptionTags.length).toBe(0);
   });
 });
