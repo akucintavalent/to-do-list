@@ -32,7 +32,9 @@ const editDescription = (list = toDoList.data) => {
     editDescriptionInput.addEventListener('focusout', edit);
 
     buttonTrash.addEventListener('click', () => {
+      debugger;
       item.checkbox.parentNode.remove();
+      debugger;
       toDoList.data = toDoList.data.filter((itemEl) => itemEl !== item);
       toDoList.data.forEach((item, index) => {
         item.index = index;

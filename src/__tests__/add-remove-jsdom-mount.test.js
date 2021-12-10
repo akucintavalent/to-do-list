@@ -1,9 +1,8 @@
-// const addElementToListHandler = require('./add-item');
 import mountDOM from 'jsdom-mount';
 import { readFileSync } from 'fs';
-import addElementToListHandler from './add-item.js';
+import addElementToListHandler from '../add-item.js';
 
-import clearAllCompleted from './clear-all-completed.js';
+import clearAllCompleted from '../clear-all-completed.js';
 
 const html = readFileSync('src/index.html', 'utf8');
 
@@ -17,7 +16,7 @@ function getRandomInt(min, max) {
 }
 
 describe('add-remove tasks functionality', () => {
-  test('adding and removing a task', () => {
+  test('adding, editing and removing a task', () => {
     mountDOM(html);
     addElementToListHandler();
     const input = document.querySelector('.input input');
@@ -52,17 +51,16 @@ describe('add-remove tasks functionality', () => {
     input.value = text;
     expect(() => addButton.click()).toThrow();
   });
-  test('add between 3 and 20 tasks with random text and remove them in random order', () => {
+  test('add between 5 and 20 tasks with random text and remove them in random order', () => {
     mountDOM(html);
     addElementToListHandler();
     const input = document.querySelector('.input input');
-    const addButton = document.querySelector('.return-symbol');
     function addTask(text) {
       input.value = text;
       input.dispatchEvent(new KeyboardEvent('keyup', { key: 'Enter' }));
     }
     const randomStrings = [];
-    const numberOfTasks = getRandomInt(3, 20);
+    const numberOfTasks = getRandomInt(5, 20);
     for (let i = 0; i < numberOfTasks; i += 1) {
       randomStrings.push(generateRandomString());
     }
@@ -74,7 +72,7 @@ describe('add-remove tasks functionality', () => {
     for (let i = 0; i < numberOfTasks; i += 1) {
       taskDescriptionTags = Array.from(document.querySelectorAll('.description'));
       taskDescriptionTags.shift();
-      const randInt = getRandomInt(0, taskDescriptionTags.length-1);
+      const randInt = getRandomInt(0, taskDescriptionTags.length - 1);
       randomStrings.splice(randInt, 1);
       // click 3 dots
       taskDescriptionTags[randInt].nextElementSibling.nextElementSibling.click();
@@ -91,7 +89,6 @@ describe('add-remove tasks functionality', () => {
     addElementToListHandler();
     clearAllCompleted();
     const input = document.querySelector('.input input');
-    const addButton = document.querySelector('.return-symbol');
     function addTask(text) {
       input.value = text;
       input.dispatchEvent(new KeyboardEvent('keyup', { key: 'Enter' }));
@@ -112,10 +109,10 @@ describe('add-remove tasks functionality', () => {
     for (let i = 0; i < numberOfCompleted; i += 1) {
       taskDescriptionTags = Array.from(document.querySelectorAll('.description'));
       taskDescriptionTags.shift();
-      randInt = getRandomInt(0, taskDescriptionTags.length-1);
+      randInt = getRandomInt(0, taskDescriptionTags.length - 1);
       while (completedIndexes.includes(randInt)) {
         randInt = (randInt + 1) % taskDescriptionTags.length;
-      };
+      }
       // click checkbox
       taskDescriptionTags[randInt].previousElementSibling.click();
       completedIndexes.push(randInt);
@@ -124,9 +121,8 @@ describe('add-remove tasks functionality', () => {
     clearCompletedButton.click();
     taskDescriptionTags = Array.from(document.querySelectorAll('.description'));
     taskDescriptionTags.shift();
-    const filteredRandomStrings = randomStrings.filter((randStr, index) => {
-      return !completedIndexes.includes(index);
-    });
+    // eslint-disable-next-line max-len
+    const filteredRandomStrings = randomStrings.filter((randStr, index) => !completedIndexes.includes(index));
     expect(filteredRandomStrings).toEqual(taskDescriptionTags.map((pTag) => pTag.innerText));
   });
 });
