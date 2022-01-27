@@ -2,12 +2,16 @@
 
 # To do list
 
-![image](https://user-images.githubusercontent.com/87897753/144259590-9b878701-4a53-4028-a2cc-02bcc45b0cef.png)
+<img width="641" alt="Zrzut ekranu 2022-01-27 o 17 45 37" src="https://user-images.githubusercontent.com/87897753/151393268-0800c33c-8fe5-4831-93db-8b7007f2adc9.png">
 
 ## Built With
 
 - HTML&CSS, JavaScript
 - Webpack
+
+## Live demo
+
+[GitHub](https://akucintavalent.github.io/to-do-list/)
 
 ## Using the project locally
 
